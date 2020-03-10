@@ -20,6 +20,12 @@
             <artifactId>twitter4j-stream</artifactId>
             <version>4.0.7</version>
         </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.typesafe/config &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.typesafe</groupId>-->
+<!--            <artifactId>config</artifactId>-->
+<!--            <version>1.4.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <properties>
