@@ -1,26 +1,25 @@
 package com.knoldus;
 
 import com.knoldus.controller.TwitterInstanceImpl;
-import twitter4j.Query;
+import com.knoldus.controller.TwitterOps;
 import twitter4j.Status;
-import twitter4j.Twitter;
 
-import java.util.Arrays;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AppDriver {
 
     public static void main(String[] args) {
-        Twitter t = (new TwitterInstanceImpl()).getTwitterInstance();
-        try {
+        TwitterOps ops = new TwitterOps(new TwitterInstanceImpl(), "#dmrc");
+//        System.out.println(ops.getListOfTweets().size());
+        List<String> list = ops.getTweetsFromGivenDate("hello", LocalDate.of(2020, 3,  9)).stream().map(status -> status.getCreatedAt().toString()).collect(Collectors.toList());
+        for (String tweet: list) {
+            System.out.println(tweet + "\n\n**********************************\n");
+        }
+        System.out.println(list.size());
 
-            List<Status> listOfTweets = t.getUserTimeline();// t.search(new Query("meToo")).getTweets();
-            Thread.sleep(5*1000);
-            System.out.println(listOfTweets);
-        }
-        catch (Exception e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
-        }
     }
 
 }
